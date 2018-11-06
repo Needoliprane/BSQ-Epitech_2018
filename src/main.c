@@ -47,7 +47,7 @@ int main(int ac, char **av)
         return (84);
     for (; board[i] != '\n'; i++);
     i++;
-    my_algo(board + i, len_second_line(board + i), my_getnbr(board) + 1);
+    my_algo(board + i, my_getnbr(board) + 1, len_second_line(board + i));
     free(board);
     return (0);
 }
