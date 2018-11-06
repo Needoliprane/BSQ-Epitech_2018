@@ -62,6 +62,8 @@ char *get_tab(char const *str)
     read = my_read(fd, str);
     if (read == NULL)
         return (NULL);
+    if (read[0] == '\0' || read[1] == '\0')
+        return (NULL);
     close(fd);
     return (read);
 }
