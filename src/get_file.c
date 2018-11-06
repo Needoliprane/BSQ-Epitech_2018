@@ -43,7 +43,7 @@ char *my_read(int fd, char const *path)
     long size = size_to_read(path);
     char *str = malloc(sizeof(char) * (size + 2));
 
-    str[size + 1] = '\0';
+    str[size] = '\0';
     c_read = read(fd, str, size);
     if (c_read == -1) {
         my_putstr("Error : read fail");

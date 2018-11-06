@@ -15,7 +15,6 @@ int my_putstr(char const *str)
         return (write(1, "--null--\n", 5));
     for (; str[i]; i++);
     write(1, str, i);
-    write(1, "\n", 1);
     return (0);
 }
 

@@ -5,10 +5,22 @@
 ** my_algo
 */
 
+#include <stdio.h>
+#include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include "my.h"
 #include "bsq.h"
+
+void my_memset(bsq_t *bsq, char *buffer)
+{
+    bsq->buffer = my_strdup(buffer);
+    bsq->adrex = 0;
+    bsq->adrey = 0;
+    bsq->max = 0;
+    bsq->min = 0;
+    bsq->value = 0;
+}
 
 int minint(int a, int b, int c)
 {
@@ -33,40 +45,34 @@ void replace_buf_print(char *buf, int max, int len, int j)
     my_putstr(buf);
 }
 
-int **create(int hei, int len)
+void my_algo_next(bsq_t *bsq, int y, int i, int x)
 {
-    int **tab = malloc(sizeof(int *) * (hei + 1));
-
-    if (tab == NULL)
-        return (NULL);
-    for (int i = 0; i <= hei; i++) {
-        tab[i] = malloc(sizeof(int) * (len + 1));
-        if (tab[i] == NULL)
-            return (NULL);
+    if (bsq->buffer[i] == '.' && y >= 1 && x >= 1) {
+        bsq->min = minint(bsq->tab[y - 1][x], bsq->tab[y][x - 1],
+        bsq->tab[y - 1][x - 1]);
+        bsq->tab[y][x] = bsq->min + 1;
+        bsq->value = bsq->min + 1;
+        (bsq->max < bsq->value) ? ((bsq->max = bsq->value), (bsq->adrex = x),
+        (bsq->adrey = y)) : x;
     }
-    return (tab);
 }
 
-void my_algo(char *buffer, int hei, int len, int **tab)
+void my_algo(char *buffer, int hei, int len)
 {
-    int max = 0;
-    int adrex = 0;
-    int adrey = 0;
+    bsq_t *bsq = malloc(sizeof(bsq_t));
+    int i = 0;
 
-    my_putstr(buffer);
-    for (int y = 1, value = 0, i = 0, min = 0; tab && y < hei; ++y) {
+    bsq->tab = create(hei, len);
+    bsq->len = len;
+    my_memset(bsq, buffer);
+    for (int y = 1; bsq->tab && y < hei; ++y) {
         for (int x = 1; x < len; ++x, i++) {
             (buffer[i] == '\n') ? i++ : i;
-            (buffer[i] == 'o') ? tab[y][x] = 0 : i;
-            if (buffer[i] == '.' && y >= 1 && x >= 1) {
-                min = minint(tab[y - 1][x], tab[y][x - 1], tab[y - 1][x - 1]);
-                tab[y][x] = min + 1;
-                value = min + 1;
-                (max < value) ? ((max = value), (adrex = x), (adrey = y)) : x;
-            }
+            (buffer[i] == 'o') ? bsq->tab[y][x] = 0 : i;
+            my_algo_next(bsq, y, i, x);
         }
     }
-    free_tab_int(tab, hei);
-    replace_buf_print(buffer, max, len, ((adrex - 1) + (adrey - 1) * len));
+    replace_buf_print(bsq->buffer, bsq->max, len, ((bsq->adrex - 1) + (bsq->adrey - 1) * len));
+    free_tab_int(bsq->tab, hei, bsq);
 }
 //    write(1, buffer, ((len) * (hei - 1)));

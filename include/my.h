@@ -12,7 +12,6 @@
 
 /* LIB */
 
-void free_tab_int(int **tab, int hei);
 char *my_revstr(char *str);
 int my_show_word_array(char **tab);
 int my_getnbr(char const *str);
