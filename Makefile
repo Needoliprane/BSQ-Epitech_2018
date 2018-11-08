@@ -12,26 +12,21 @@ NAME	=	bsq
 SRC	=	src/get_file.c					\
 		src/my_algo.c					\
 		lib/my_strdup.c					\
-		lib/free.c						\
+		lib/free.c					\
 		lib/my_getnbr.c					\
 		lib/my_putstr.c					\
 		lib/my_strlen.c					\
-		lib/my_str_to_word_array.c		\
+		lib/my_str_to_word_array.c			\
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	+=	-I./include/ -W -Wextra -Wall -ofast -g3
+CFLAGS	+=	-I./include/ -W -Wextra -Wall
 
 all: 		$(NAME)
 
 $(NAME): 	$(OBJ)
 		$(CC) -o $(NAME) $(OBJ) src/main.c
 
-tests_run:
-	$(CC) $(SRC) Tests/*.c --coverage -lcriterion -I./include
-	./a.out
-	rm *.gcno
-	rm *.gcda
 
 clean:
 		rm -f $(OBJ)
