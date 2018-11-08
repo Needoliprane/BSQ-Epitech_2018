@@ -74,4 +74,3 @@ void my_algo(char *buffer, int hei, int len)
     (bsq->adrey - 1) * len));
     free_tab_int(bsq->tab, hei, bsq);
 }
-//    write(1, buffer, ((len) * (hei - 1)));
