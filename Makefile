@@ -20,7 +20,7 @@ SRC	=	src/get_file.c					\
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	+=	-I./include/ -W -Wextra -Wall -ofast -g3
+CFLAGS	+=	-I./include/ -W -Wextra -Wall -ofast
 
 all: 		$(NAME)
 
