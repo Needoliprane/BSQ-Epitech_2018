@@ -24,8 +24,6 @@ void my_memset(bsq_t *bsq, char *buffer)
 
 int minint(int a, int b, int c)
 {
-    if (a < 1 || b < 1 || c < 1)
-        return (0);
     if (a <= b && a <= c)
         return (a);
     else if (b <= a && b <= c)
@@ -72,7 +70,8 @@ void my_algo(char *buffer, int hei, int len)
             my_algo_next(bsq, y, i, x);
         }
     }
-    replace_buf_print(bsq->buffer, bsq->max, len, ((bsq->adrex - 1) + (bsq->adrey - 1) * len));
+    replace_buf_print(bsq->buffer, bsq->max, len, ((bsq->adrex - 1) +
+    (bsq->adrey - 1) * len));
     free_tab_int(bsq->tab, hei, bsq);
 }
 //    write(1, buffer, ((len) * (hei - 1)));
