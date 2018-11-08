@@ -12,7 +12,6 @@ NAME	=	bsq
 SRC	=	src/main.c						\
 		src/get_file.c					\
 		src/my_algo.c					\
-		src/my_print.c					\
 		lib/my_strdup.c					\
 		lib/free.c						\
 		lib/my_getnbr.c					\
