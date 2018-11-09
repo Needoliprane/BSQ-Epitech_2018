@@ -13,7 +13,7 @@
 typedef struct bsq_s
 {
     char *buffer;
-    int **tab;
+    unsigned short **tab;
     int max;
     int min;
     int adrey;
@@ -26,7 +26,7 @@ typedef struct bsq_s
 /* MY ALGO */
 
 void my_algo(char *tab, int hei, int len);
-int **create(int hei, int len);
+unsigned short **create(int hei, int len);
 
 /* GET THE BOARD */
 
@@ -37,6 +37,6 @@ long size_to_read(char const*path);
 
 /* FREE */
 
-void free_tab_int(int **tab, int hei, bsq_t *bsq);
+void free_tab_int(unsigned short **tab, int hei, bsq_t *bsq);
 
 #endif /* !BQS_H_ */

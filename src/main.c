@@ -11,14 +11,14 @@
 #include "../include/my.h"
 #include "../include/bsq.h"
 
-int **create(int hei, int len)
+unsigned short **create(int hei, int len)
 {
-    int **tab = malloc(sizeof(int *) * (hei + 1));
+    unsigned short **tab = malloc(sizeof(unsigned short *) * (hei + 1));
 
     if (tab == NULL)
         return (NULL);
     for (int i = 0; i <= hei; i++) {
-        tab[i] = malloc(sizeof(int) * (len + 1));
+        tab[i] = malloc(sizeof(unsigned short) * (len + 1));
         if (tab[i] == NULL)
             return (NULL);
         for (int j = 0; j <= len; j++)

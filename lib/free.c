@@ -22,7 +22,7 @@ void free_express(int *t, char **numbers)
     free_tab(numbers);
 }
 
-void free_tab_int(int **tab, int hei, bsq_t *bsq)
+void free_tab_int(unsigned short **tab, int hei, bsq_t *bsq)
 {
     if (tab == NULL)
         exit(84);
