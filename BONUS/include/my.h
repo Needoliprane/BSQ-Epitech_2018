@@ -8,7 +8,14 @@
 #ifndef MY_H_
 #define MY_H_
 
-/* MACCRO */
+/* define */
+
+#define RED   "\x1B[31m"
+#define GRN   "\x1B[32m"
+#define YEL   "\x1B[33m"
+#define BLU   "\x1B[34m"
+#define WHT   "\x1B[37m"
+#define RESET "\x1B[0m"
 
 /* LIB */
 
