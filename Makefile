@@ -21,7 +21,7 @@ SRC	=	src/main.c						\
 
 OBJ	=	$(SRC:.c=.o)
 
-CFLAGS	+=	-I./include/ -W -Wextra -Wall -ofast
+CFLAGS	+=	-I./include/ -W -Wextra -Wall
 
 all: 		$(NAME)
 
