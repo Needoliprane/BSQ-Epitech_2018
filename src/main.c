@@ -36,6 +36,19 @@ int len_second_line(char const *str)
     return (i);
 }
 
+int check_board(char *str, int i)
+{
+    for (int j = 0; str[j] && str[j] != '\n'; j++) {
+        if (str[j] < '0' || str[j] > '9')
+            return (84);
+    }
+    for (int j = i; str[j]; j++) {
+        if (str[j] != '.' && str[j] != '\n' && str[j] != 'o')
+            return (84);
+    }
+    return (0);
+}
+
 int main(int ac, char **av)
 {
     char *board = NULL;
@@ -47,6 +60,8 @@ int main(int ac, char **av)
         return (84);
     for (; board[i] != '\n'; i++);
     i++;
+    if (check_board(board, i) == 84)
+        return (84);
     my_algo(board + i, my_getnbr(board) + 1, len_second_line(board + i));
     free(board);
     return (0);
