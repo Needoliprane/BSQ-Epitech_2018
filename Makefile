@@ -5,7 +5,7 @@
 ## make
 ##
 
-CC	=	gcc
+CC	=	gcc -ofast
 
 NAME	=	bsq
 

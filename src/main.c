@@ -38,11 +38,15 @@ int len_second_line(char const *str)
 
 int check_board(char *str, int i)
 {
-    for (int j = 0; str[j] && str[j] != '\n'; j++) {
+    int j = 0;
+
+    for (j = 0; str[j] && str[j] != '\n'; j++) {
         if (str[j] < '0' || str[j] > '9')
             return (84);
     }
-    for (int j = i; str[j]; j++) {
+    if (my_getnbr(str) < 0)
+        return (84);
+    for (j = i; str[j]; j++) {
         if (str[j] != '.' && str[j] != '\n' && str[j] != 'o')
             return (84);
     }
