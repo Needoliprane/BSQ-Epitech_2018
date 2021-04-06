@@ -31,6 +31,9 @@ $(NAME): 	$(OBJ)
 clean:
 		rm -f $(OBJ)
 
+test:
+		rm -f $(OBJ)
+
 coverage_clean:
 		rm -f *.gc*
 		rm -f src/*.gc*
